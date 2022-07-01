@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Collins' Blog</title>
+<style>
+    body {
+          margin: 0px;
+          padding: 5% 10% 0% 10%;
+    }
+    #blog-head {
+                background-color: orange;
+                padding: 2em;
+                color: #000;
+    }
+    #posts {
+            padding: 2em;
+    }
+    a:link {
+        color: orange;
+    }
+    ul:not(#recent-posts) {
+        padding: 2em;
+    }
+    li:not(#recent-posts-title) {
+        list-style: none;
+        padding: 1em;
+        display: inline;
+        font-weight: bold;
+    }
+
+    #navbar {
+             text-align: right;
+    }
+    footer {
+            width: 100%;
+            margin-bottom: -100%;
+            text-align: center;
+            padding-top: 2em;
+            padding-bottom: 2em;
+            padding-left: -5%;
+            background-color: orange;
+            float: left;
+    }
+    #section-3 {
+                 background-color: red;
+                 width: 100%;
+                 height: 50%;
+                 padding-bottom: 10%;
+    }
+
+
+    #recent-posts-title {
+                          display: inline;
+                          float: left;
+                          padding: 1em;
+                          color: white;
+                          font-family: arial;
+    }
+    #recent-post-links {
+                        color: #fff;
+    }
+
+</style>
+</head>
+<body>
+
+<div id="blog-head">
+<h1>Collins' Blog</h1>
+</div>
+
+<!------ top navbar -------->
+<div id="navbar">
+<ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="aboutus">About Us</a></li>
+    <li><a href="contactus">Contact Us</a></li>
+</ul>
+
+</div>
+{% for post in posts reversed %}
+<div id="posts">
+<a style="text-decoration: none;" href="/posts/{{post.id}}">
+<h2 style="color: orange;">{{post.title}}</h2>
+</a>
+<p>{{post.date_created}}</p>
+<p style="font-size: 25px;">{{post.body|truncatewords:40}}</p>
+
+</div>
+{% endfor %}
+
+<!----------------------------
+... Recent Posts..............
+------------------------------>
+<div id="section-3">
+<h2 id="helpful-links-head" style="color: #fff;">Recent Posts</h2>
+    {% for post in posts %}
+    <ul id="recent-posts">
+     <li id="recent-posts-title"><a href="/posts/{{post.id}}" id="recent-post-links">{{post.title}}</a></li>
+    </ul>
+
+    {% endfor %}
+
+</div>
+
+<!---------------footer starts here ---------------------->
+<div id="footer">
+<footer>
+    &copy Copyright Collins' blog, 2022. All rights reserved.
+</footer>
+</div>
+
+</body>
+</html>
