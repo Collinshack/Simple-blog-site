@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Collins' Blog</title>
+    <script src="https://kit.fontawesome.com/6c7937d9ae.js" crossorigin="anonymous"></script>
 <style>
     body {
           margin: 0px;
@@ -43,10 +44,10 @@
             float: left;
     }
     #section-3 {
-                 background-color: red;
+                 background-color: #000;
                  width: 100%;
                  height: 50%;
-                 padding-bottom: 10%;
+                 padding-bottom: 15%;
     }
 
 
@@ -59,17 +60,23 @@
     }
     #recent-post-links {
                         color: #fff;
+                        text-decoration: none;
     }
 
+    i.fa-solid fa-right-long {
+                                color: red;
+                                padding: 10px;
+    }
 </style>
 </head>
 <body>
-
+<!------ top navbar -------->
+<nav class="nav" is_info>
 <div id="blog-head">
 <h1>Collins' Blog</h1>
 </div>
+</nav>
 
-<!------ top navbar -------->
 <div id="navbar">
 <ul>
     <li><a href="#">Home</a></li>
@@ -79,13 +86,15 @@
 
 </div>
 {% for post in posts reversed %}
+<div id="blog-post">
 <div id="posts">
 <a style="text-decoration: none;" href="/posts/{{post.id}}">
 <h2 style="color: orange;">{{post.title}}</h2>
 </a>
 <p>{{post.date_created}}</p>
-<p style="font-size: 25px;">{{post.body|truncatewords:40}}</p>
-
+<p style="font-size: 22px;">{{post.body|truncatewords:40}}</p>
+    <a href="/posts/{{post.id}}"><strong>Read more..</strong> </a><i class="fa-solid fa-right-long"></i>
+</div>
 </div>
 {% endfor %}
 
@@ -96,12 +105,14 @@
 <h2 id="helpful-links-head" style="color: #fff;">Recent Posts</h2>
     {% for post in posts %}
     <ul id="recent-posts">
-     <li id="recent-posts-title"><a href="/posts/{{post.id}}" id="recent-post-links">{{post.title}}</a></li>
+     <li id="recent-posts-title"><a href="/posts/{{post.id}}" id="recent-post-links">{{post.title}}</a><i class="fa-solid fa-angles-right"></i></li>
     </ul>
 
     {% endfor %}
 
 </div>
+
+
 
 <!---------------footer starts here ---------------------->
 <div id="footer">

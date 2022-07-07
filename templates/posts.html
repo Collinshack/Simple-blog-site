@@ -13,14 +13,28 @@
                 padding: 2em;
                 color: #000;
     }
+    #post-body {
+                letter-spacing: 2px;
+                word-spacing: 5px;
+                font-family: 'Josefin';
+                line-height: 40px;
+    }
+    ul li {
+            list-style: none;
+            text-align: right;
+    }
 </style>
 </head>
 <body>
 <div id="blog-head">
 <h1>Collins' Blog</h1>
 </div>
+<ul>
+    <li><a href="/">Return Home</a></li>
+</ul>
+
 <h3>{{posts.title}}</h3>
 <p>{{posts.date_created}}</p>
-<p>{{posts.body}}</p>
+<p id="post-body">{{posts.body}}</p>
 </body>
 </html>
